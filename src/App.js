@@ -6,7 +6,6 @@ let scoreBoard = JSON.parse(localStorage.getItem('score')) || {
     wins: 0,
     loses: 0
 }
-
 let computerPick = ''
 let result = ''
 let wins = document.getElementById('wins');
@@ -35,13 +34,13 @@ const evaluateResult = (user) => {
 
    alert(`You picked ${user}. Computer picked ${computerPick}. ${result}`)
    displayResult()
-   localStorage.setItem('score', JSON.stringify(scoreBoard))
+   saveTheGame()
 }
 
 const displayResult = () => {
     wins.innerText = `Wins: ${scoreBoard.wins}`
     loses.innerText = `Loses: ${scoreBoard.loses}`
-    localStorage.setItem('score', JSON.stringify(scoreBoard))
+    saveTheGame()
 }
 
 const resetScores = () => {
@@ -53,4 +52,8 @@ const resetScores = () => {
     wins.innerText = `Wins: ${scoreBoard.wins}`
     loses.innerText = `Loses: ${scoreBoard.loses}`
     localStorage.removeItem('score')
+}
+
+const saveTheGame = () => {
+    localStorage.setItem('score', JSON.stringify(scoreBoard))
 }
