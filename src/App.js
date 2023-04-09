@@ -10,6 +10,8 @@ let computerPick = ''
 let result = ''
 let wins = document.getElementById('wins');
 let loses = document.getElementById('loses');
+let resultEl = document.getElementById('resultEl')
+let pickEl = document.getElementById('pickEl')
 // retrieve
 wins.innerText = `Wins: ${scoreBoard.wins}`
 loses.innerText = `Loses: ${scoreBoard.loses}`
@@ -32,7 +34,9 @@ const evaluateResult = (user) => {
         scoreBoard.loses += 1;
     }   
 
-   alert(`You picked ${user}. Computer picked ${computerPick}. ${result}`)
+    resultEl.innerText = `${result}`
+    pickEl.innerText = `You picked ${user}. Computer picked ${computerPick}.`
+
    displayResult()
    saveTheGame()
 }
@@ -44,7 +48,8 @@ const displayResult = () => {
 }
 
 const resetScores = () => {
-    alert('Scoreboard has been reset.')
+    resultEl.innerText = 'The scores has been reset.'
+    pickEl.innerText = ''
     scoreBoard = {
         wins: 0,
         loses: 0
